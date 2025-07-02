@@ -1,0 +1,109 @@
+import random
+
+def choice():
+    return input("Rock, paper or scissors? (r/p/s): ").casefold()
+
+options = ["r", "p", "s"]
+win_count = 0
+lose_count = 0
+p1_win_count = 0  
+p1_lose_count = 0 
+p2_win_count = 0  
+p2_lose_count = 0  
+opponent = None  
+
+print("Let's play rock, paper or scissors!")
+want_play = input("Do you want to play? Type y for yes and n for no: ").casefold()
+
+while want_play not in ["y", "n"]:  
+    want_play = input("Please enter a valid option. Press y to play and n for no: ").casefold()
+
+if want_play == "n":
+    print("Okay - no game for you")
+else:
+    opponent = input("Who do you want to play against? A computer (c) or your friend (f): ").casefold()
+
+    while opponent not in ["c", "f", "e"]:  
+        opponent = input("Please give me a valid input. Press c for computer, f for friend, or e to exit: ").casefold()
+
+    if opponent == "e":  
+        want_play = "n"
+        print("Okay - no game for you")
+
+while want_play == "y":  
+    if opponent == "c":
+        print("You'll play against the Computer then!") 
+        current_choice = choice()
+        computer_choice = random.choice(options)
+        print(f"Computer chose: {computer_choice}")  
+
+        if current_choice == "p" and computer_choice == "r":
+            print("You win!")
+            win_count += 1
+        elif current_choice == "s" and computer_choice == "p":
+            print("You win!")
+            win_count += 1
+        elif current_choice == "r" and computer_choice == "s":
+            print("You win!")
+            win_count += 1
+        elif current_choice == "p" and computer_choice == "s":
+            print("You lose!")
+            lose_count += 1
+        elif current_choice == "s" and computer_choice == "r":
+            print("You lose!")
+            lose_count += 1
+        elif current_choice == "r" and computer_choice == "p":
+            print("You lose!")
+            lose_count += 1
+        elif current_choice == computer_choice:
+            print(f"You both chose {current_choice}! It's a tie!")
+        else:
+            print("Invalid input.")
+
+    elif opponent == "f":
+        print("A rock paper scissor 1 vs. 1! Let's see who wins")  
+        p1_choice = input("Player 1 - Rock, paper or scissors? (r/p/s): ").casefold()
+        p2_choice = input("Player 2 - Rock, paper or scissors? (r/p/s): ").casefold()
+
+        if p1_choice == "p" and p2_choice == "r":
+            print("Player 1 wins!")
+            p1_win_count += 1
+            p2_lose_count += 1
+        elif p1_choice == "s" and p2_choice == "p":
+            print("Player 1 wins!")
+            p1_win_count += 1
+            p2_lose_count += 1
+        elif p1_choice == "r" and p2_choice == "s":
+            print("Player 1 wins!")
+            p1_win_count += 1
+            p2_lose_count += 1
+        elif p1_choice == "p" and p2_choice == "s":
+            print("Player 2 wins!")
+            p1_lose_count += 1
+            p2_win_count += 1
+        elif p1_choice == "s" and p2_choice == "r":
+            print("Player 2 wins!")
+            p1_lose_count += 1
+            p2_win_count += 1
+        elif p1_choice == "r" and p2_choice == "p":
+            print("Player 2 wins!")
+            p1_lose_count += 1
+            p2_win_count += 1
+        elif p1_choice == p2_choice:
+            print(f"You both chose {p1_choice}! It's a tie!")
+        else:
+            print("Invalid input.")
+
+    want_play = input("Want to play again? Type y or n: ").casefold()  
+    while want_play not in ["y", "n"]:  
+        want_play = input("Please enter a valid option (y/n): ").casefold()
+
+if opponent == "c":
+    print("Thank you for playing my second ever Python game!")
+    print(f"You've won {win_count} and lost {lose_count} {'game' if win_count + lose_count == 1 else 'games'}")
+elif opponent == "f":
+    print("Final Scores:")
+    print(f"Player 1 won {p1_win_count} and lost {p1_lose_count} games!")
+    print(f"Player 2 won {p2_win_count} and lost {p2_lose_count} games!")
+else:
+    print("I didn't wanna play anyways 😒")
