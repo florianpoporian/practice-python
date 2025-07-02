@@ -1,0 +1,33 @@
+import random
+def want_play(string):
+    return input("Please enter y (yes) or n (no) if you would you like to roll the dice: ")
+def get_iterations(string):
+    return input("How many dices would you like to roll: ") 
+def diceroll():
+    return random.randint(1, 6)
+print("Welcome to the dice roll game")
+answer = want_play("")
+count = 1
+while answer != "n":
+    if answer == "y":
+        print("Thank you for agreeing! Let's get the dice rolling 🦾")
+        iterations = get_iterations("")
+        try:
+            num_dice = int(iterations)
+        except ValueError:
+            print("Please enter a valid number.")
+            continue
+        for i in range(1, num_dice + 1):
+            print(f"Dice {i}: {diceroll()}")
+        if count == 1:
+            print("Thank you for playing one time")
+        else:
+            print("Thank you for playing {} times".format(count))
+        count += 1
+        answer = input("Would you like to play again? (y/n): ")
+    else:
+        answer = want_play("")
+if count == 1:
+    print("Thank you for playing my first ever python project. You've rolled the dice one time")
+else:
+    print("Thank you for playing my first ever python project. You've rolled the dice {} times".format(count - 1))
