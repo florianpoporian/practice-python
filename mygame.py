@@ -1,3 +1,5 @@
+# This file is my version of the project provided here: https://www.youtube.com/watch?v=6gLeplbqtqg. https://github.com/techwithtim/Python-Platformer/tree/main/assets
+
 import os 
 import random
 import math
