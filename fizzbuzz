@@ -35,8 +35,8 @@ for number in range(1, 101):
     player_input = input(f"Player {current_player}, your turn (number {number}): ").strip().lower()
 
     if player_input != correct_answer:
-        print(f"\n❌ Wrong answer! Player {current_player} lost on number {number}.")
+        print(f"\n Wrong answer! Player {current_player} lost on number {number}.")
         print(f"The correct answer was: {correct_answer}")
         break
 else:
-    print("\n🎉 Congratulations! All players made it to 100!")
+    print("\n Congratulations! All players made it to 100!")
